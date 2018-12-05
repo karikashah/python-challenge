@@ -38,6 +38,7 @@ with open(inputFile) as financialAnalysisData:
             greatestInc[1] = revChange
             greatestInc[0] = row["Date"]
 
+        # Determine the greatest decrease
         if (revChange < greatestDec[1]):
             greatestDec[1] = revChange
             greatestDec[0] = row["Date"]
@@ -59,7 +60,7 @@ with open(inputFile) as financialAnalysisData:
     print("--------------------------------------------------")
     print("")
 
-    # Output Files
+    # print output to the file
 with open(outputFile, "w") as txtFile:
     txtFile.write("Total Months: " + str(totalMonths))
     txtFile.write("\n")

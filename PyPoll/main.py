@@ -48,7 +48,7 @@ listVotes = list(candidateVotes.values())
 print("Winner is " + str(list(candidateVotes.keys())[list(candidateVotes.values()).index(max(listVotes))])) # Prints george
 print("-------------------------------------")
 
-# Output Files
+# print output to the file
 with open(outputFile, "w") as txtFile:
     txtFile.write("Election results:")
     txtFile.write("\n")
@@ -63,7 +63,7 @@ with open(outputFile, "w") as txtFile:
         txtFile.write("\n")
     txtFile.write("-------------------------------------")
     txtFile.write("\n")
-    txtFile.write("Winner is " + str(list(candidateVotes.keys())[list(candidateVotes.values()).index(max(listVotes))])) # Prints george
+    txtFile.write("Winner is " + str(list(candidateVotes.keys())[list(candidateVotes.values()).index(max(listVotes))]))
     txtFile.write("\n")
     txtFile.write("-------------------------------------")
     
