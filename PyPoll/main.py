@@ -3,7 +3,7 @@ import os
 import csv
 
 inputFile = os.path.join("../../../Python Resources", "election_data.csv")
-#outputFile = os.path.join("../../../Python Resources", "financialdata_KS.txt")
+outputFile = os.path.join("../../../Python Resources", "election_results_KS.txt")
 
 # Declare variables
 totalVotes = 0 # for holding total count of votes 
@@ -31,7 +31,7 @@ with open(inputFile) as electionData:
         else:
             # he is already in the list just add his vote to the dictionary
             candidateVotes[currentCandidate] = candidateVotes[currentCandidate] + 1
-
+# print output to the terminal
 print(f"Election results:")
 print("-------------------------------------")
 print(f"Total Votes: {totalVotes}")
@@ -39,7 +39,31 @@ print("-------------------------------------")
 for cv in candidateVotes:
     print(cv + ": " + str(round(((candidateVotes[cv]/totalVotes)*100),3)) + "%" + " (" + str(candidateVotes[cv]) + ")") 
 print("-------------------------------------")
-print("Winner is ")
+
 # printing the winner 
-#print(max(int(s) for s in candidateVotes))
+# get values from dictionary & get max value of it
+listVotes = list(candidateVotes.values())
+
+# print based on dictionary value to pull the matching key
+print("Winner is " + str(list(candidateVotes.keys())[list(candidateVotes.values()).index(max(listVotes))])) # Prints george
 print("-------------------------------------")
+
+# Output Files
+with open(outputFile, "w") as txtFile:
+    txtFile.write("Election results:")
+    txtFile.write("\n")
+    txtFile.write("-------------------------------------")
+    txtFile.write("\n")
+    txtFile.write("Total Votes: " + str(totalVotes))
+    txtFile.write("\n")
+    txtFile.write("-------------------------------------")
+    txtFile.write("\n")
+    for cv in candidateVotes:
+        txtFile.write(cv + ": " + str(round(((candidateVotes[cv]/totalVotes)*100),3)) + "%" + " (" + str(candidateVotes[cv]) + ")") 
+        txtFile.write("\n")
+    txtFile.write("-------------------------------------")
+    txtFile.write("\n")
+    txtFile.write("Winner is " + str(list(candidateVotes.keys())[list(candidateVotes.values()).index(max(listVotes))])) # Prints george
+    txtFile.write("\n")
+    txtFile.write("-------------------------------------")
+    
